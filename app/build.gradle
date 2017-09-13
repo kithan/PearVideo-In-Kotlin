@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.kotlin.pearvideo"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        buildConfigField("String","API_HOST","\"https://app.pearvideo.com/clt/jsp/v3/\"")
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    testCompile "junit:junit:$rootProject.junitVersion"
+    compile "com.android.support.constraint:constraint-layout:$rootProject.constraintLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+
+
+    compile "com.vise.xiaoyaoyou:xsnow:$rootProject.xsnowVersion"
+    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    compile "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbindingVersion"
+    compile "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.brvahVersion"
+    compile("com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.rxlifecycleVersion") {
+        exclude(group: 'com.android.support')
+    }
+    compile("devlight.io:navigationtabbar:$rootProject.ntbVersion") {
+        exclude(group: 'com.android.support')
+    }
+
+
+}
