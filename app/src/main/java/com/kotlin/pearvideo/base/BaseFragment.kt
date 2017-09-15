@@ -15,16 +15,16 @@ import com.trello.rxlifecycle2.components.support.RxFragment
  */
 abstract class BaseFragment<T : BasePresenter<*>> : RxFragment(), IMvpView {
 
-    lateinit  var presenter: T
+    lateinit var presenter: T
 
     abstract fun initPresenter(): T
 
     lateinit var rootView: View
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater!!.inflate(contentView, container,false)
+        rootView = inflater!!.inflate(contentView, container, false)
         presenter = initPresenter()
-        presenter?.attachView(this )
+        presenter?.attachView(this)
         return rootView
     }
 

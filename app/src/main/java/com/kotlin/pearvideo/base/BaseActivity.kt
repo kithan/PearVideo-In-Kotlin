@@ -22,7 +22,7 @@ import com.vise.xsnow.event.BusManager
  */
 abstract class BaseActivity<P : IPresenter<*>> : RxAppCompatActivity(), IMvpView {
 
-     var presenter: P?=null
+    var presenter: P? = null
 
     abstract fun initPresenter(): P?
 
@@ -57,7 +57,7 @@ abstract class BaseActivity<P : IPresenter<*>> : RxAppCompatActivity(), IMvpView
 
 //        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.colorPrimary))
         presenter = initPresenter()
-        presenter?.attachView(this)
+        presenter?.attachView(this as Nothing)
         initViews()
     }
 
